@@ -18,7 +18,9 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "discord.js": "^14.2.0"
+    "@discordjs/rest": "^1.0.1",
+    "discord.js": "^14.2.0",
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {
     "eslint": "^8.22.0"
