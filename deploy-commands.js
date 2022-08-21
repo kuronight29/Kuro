@@ -17,6 +17,10 @@ for (const file of commandFiles) {
 const rest = new REST({ version: '10' }).setToken(token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
+	.then(() => console.log('✅ Đã đăng nhập Guild commands.'))
+	.catch(console.error);
+
+rest.put(Routes.applicationCommands(clientId),{ body: commands })
+	.then(() => console.log('✅ Đã đăng nhập Global commands.'))
 	.catch(console.error);
 
