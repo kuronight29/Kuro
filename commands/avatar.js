@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const data = new SlashCommandBuilder()
 
 module.exports = {
@@ -9,6 +10,6 @@ module.exports = {
 	async execute(interaction) {
 		const user = interaction.options.getUser('target');
 		if (user) return interaction.reply(`${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`);
-		return interaction.reply(`Your avatar: ${interaction.user.displayAvatarURL()}`);
+		return interaction.reply(`Avatar: ${interaction.user.displayAvatarURL()}`);
 	},
 };

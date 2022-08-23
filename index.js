@@ -1,10 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, Collection,GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
+client.commands = new Collection();
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 const commandsPath = path.join(__dirname, 'commands');
@@ -26,6 +26,20 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const command = client.commands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'Có lỗi', ephemeral: true });
+	}
+});
 
 
 client.login(token);

@@ -3,7 +3,7 @@ const data = new SlashCommandBuilder()
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('prune')
+		.setName('clear')
 		.setDescription('Xóa lên đến 99 tin nhắn.')
 		.addIntegerOption(option => option.setName('amount').setDescription('Số lượng tin nhắn cần xóa')),
 	async execute(interaction) {
