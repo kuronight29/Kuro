@@ -1,9 +1,37 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection,GatewayIntentBits } = require('discord.js');
+const { Client, Collection,GatewayIntentBits, Partials } = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [
+	GatewayIntentBits.DirectMessageReactions,
+	GatewayIntentBits.DirectMessageTyping,
+	GatewayIntentBits.DirectMessages,
+	GatewayIntentBits.GuildBans,
+	GatewayIntentBits.GuildEmojisAndStickers,
+	GatewayIntentBits.GuildIntegrations,
+	GatewayIntentBits.GuildInvites,
+	GatewayIntentBits.GuildMembers,
+	GatewayIntentBits.GuildMessageReactions,
+	GatewayIntentBits.GuildMessageTyping,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.GuildPresences,
+	GatewayIntentBits.GuildScheduledEvents,
+	GatewayIntentBits.GuildVoiceStates,
+	GatewayIntentBits.GuildWebhooks,
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.MessageContent
+],
+	partials: [
+		Partials.User,
+		Partials.Channel,
+		Partials.GuildMember,
+		Partials.Message,
+		Partials.Reaction,
+		Partials.GuildScheduledEvent,
+		Partials.ThreadMember
+	]
+ });
 client.commands = new Collection();
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
