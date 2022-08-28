@@ -9,7 +9,15 @@ module.exports = {
 		.addUserOption(option => option.setName('target').setDescription('Lấy avatar của ai')),
 	async execute(interaction) {
 		const user = interaction.options.getUser('target');
-		if (user) return interaction.reply(`${user.username}'s avatar: ${user.displayAvatarURL({ dynamic: true })}`);
-		return interaction.reply(`Avatar: ${interaction.user.displayAvatarURL()}`);
+		if (!user) return interaction.reply("Bạn chưa chọn người để lấy avatar");
+		await interaction.reply({
+            embeds: [
+             new EmbedBuilder()
+                .setDescription(`Avatar của ${user.toString()}`)
+                .setColor(0x0099FF)
+                .setImage(`${user.displayAvatarURL({ dynamic: true})}`)
+            ],
+            ephemeral: false
+        })
 	},
 };

@@ -6,6 +6,6 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Xem độ chậm trễ của bot'),
 	async execute(interaction) {
-		await interaction.reply(`🏓Pong!`);
+		await interaction.reply(`🏓Pong! ${client.ws.ping}`);
 	},
 };

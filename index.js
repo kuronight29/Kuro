@@ -32,6 +32,9 @@ const client = new Client({ intents: [
 		Partials.ThreadMember
 	]
  });
+
+
+
 client.commands = new Collection();
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -68,6 +71,10 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply({ content: 'Có lỗi', ephemeral: true });
 	}
 });
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://kuro:kuro2972009@emilia.dp4qnj5.mongodb.net/?retryWrites=true&w=majority').then(() => 
+console.log(`✅ Đã kết nối với Database`))
 
 
 client.login(token);
