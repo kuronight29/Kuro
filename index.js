@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection,GatewayIntentBits, Partials } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, Partials, ActivityType } = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [
@@ -33,8 +33,6 @@ const client = new Client({ intents: [
 	]
  });
 
-
-
 client.commands = new Collection();
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -65,7 +63,7 @@ client.on('interactionCreate', async interaction => {
 	if (!command) return;
 
 	try {
-		await command.execute(interaction);
+		await command.execute(interaction, client);
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'Có lỗi', ephemeral: true });

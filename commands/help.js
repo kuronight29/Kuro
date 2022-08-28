@@ -12,17 +12,17 @@ module.exports = {
                 .setDescription(`prefix của em là \`/\` ,có thắc mắc gì vui lòng liên hệ Long Vũ#1640
                                 **🙎‍♀️ User**
                                 \`avatar\` \`user-info\` 
-                                **🧨Action**
-                                \`kiss\` \`hug\` \`slap\` 
-                                **🔧Utility**
+                                **😀 Fun**
+                                \`kiss\` \`hug\` \`slap\` \`waifu\`
+                                **🔧 Utility**
                                 \`ping\` \`server\` \`clear\` \`help\` 
-                                 **🔒Moderation** 
+                                 **🔒 Moderation** 
                                 \`kick\`
                                   `)
                 .setColor(0x0099FF)
                 .setTimestamp()
-                .setThumbnail('https://media.giphy.com/media/a6pzK009rlCak/giphy.gif')
-                .setImage('https://media.giphy.com/media/bqSkJ4IwNcoZG/giphy.gif')
+                .setThumbnail('https://i.pinimg.com/originals/9a/5c/e0/9a5ce09d29976b8a0591e66fd57192ba.gif')
+                .setImage('https://steamuserimages-a.akamaihd.net/ugc/97231695406824434/300AEADC0181C01CA822306A9F86E9DDD2A5DDE9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false')
               ],
         })
     }
